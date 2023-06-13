@@ -1,0 +1,7 @@
+{
+  "name": "SportsProfile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
