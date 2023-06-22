@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="end" class="custom-button">
+      <ion-button>
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Team List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ng-container *ngIf="addProfile">
+    <ion-list *ngFor="let item of addProfile">  
+      <ion-item href="/home/{{item.firstName}}" detail>
+        <ion-thumbnail class="ion-margin-end">
+          <ion-img src="{{item.imageURL}}"></ion-img>
+          <!-- <ion-button (click)="goToProfile()">Go to Profile</ion-button> -->
+        </ion-thumbnail>
+          <ion-label>{{item.firstName}}</ion-label>
+          <ion-label>{{item.lastName}}</ion-label>
+          <ion-label>{{item.position}}</ion-label>
+          <ion-label>{{item.club}}</ion-label>
+
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  
+
+
+</ion-content>

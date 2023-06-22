@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="end" class="custom-button">
+      <ion-button>
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="goPrev()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goNext()">
+        <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="custom-title">American Football</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+    <swiper-container 
+    #swiper
+    (afterinit)="swiperReady()"
+    (slidechange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="true">
+      <swiper-slide *ngFor="let image of images">
+        <img [src]="image" />
+      </swiper-slide>
+    </swiper-container>
+
+    <ion-label class="today" style="font-weight: 700;font-size: 3em;">
+    Today
+    <p class="time" style="font-weight: 400; color: #433465"> {{today | date:'fullDate'}}</p>
+  <h1 class="popular">Popular</h1>  
+  </ion-label>
+    <ion-card *ngFor="let item of addProfile">
+      <ion-card-header>
+        <ion-card-subtitle>
+          {{item.firstName}}
+        </ion-card-subtitle>
+        <ion-item>
+          <ion-icon name="ellipse"></ion-icon>
+          <ion-label>{{item.club}}</ion-label>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+  </ion-content>

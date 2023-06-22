@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="end" class="custom-button">
+      <ion-button>
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Profile Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let item of addProfile">
+    <ion-card-header>
+      <ion-card-subtitle>{{item.firstName}}</ion-card-subtitle>
+      <ion-card-title>{{item.club}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-thumbnail class="ion-margin-end">
+      <ion-img src="{{item.imageURL}}"></ion-img>
+      </ion-thumbnail>
+      <p>Total Wins</p>{{item.totalWins}}
+    </ion-card-content>
+  </ion-card>  
+</ion-content>

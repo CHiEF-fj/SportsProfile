@@ -1,0 +1,46 @@
+.custom-title {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+  }
+
+// .custom-button {
+// }  
+
+.custom-toolbar {
+    --background: #6A24FF;
+}
+
+img {
+
+  height: 100%;
+
+  width: 100%;
+
+}
+
+swiper-container {
+  width: 100%;
+  height: 50%;
+  // --swiper-pagnination-bullet-inactive-color: var(--ion-color-step-100,)
+}
+
+swiper-slider {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+
+.today{
+  padding-left: 20px;
+}
+
+.time{
+  padding-left: 20px;
+}
+
+.popular{
+  padding-left: 20px;
+}

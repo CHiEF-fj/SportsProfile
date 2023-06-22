@@ -1,0 +1,18 @@
+{
+    "total":51957,
+    "Limit":10,
+    "skip":0,
+    "data": [
+        {
+            "imageURL":"./assets/7.jpg",
+            "firstName" : "Tom",
+            "lastName": "Brady",
+            "dateOfBirth": "01/07/1999",
+            "position": "Quaterback",
+            "totalWins": "43",
+            "totalMatch": "47",
+            "jerseyNo": "15",
+            "club": "Bulls"
+        }
+    ]
+}
