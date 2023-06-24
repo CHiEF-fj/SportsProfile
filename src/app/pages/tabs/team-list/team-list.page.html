@@ -10,24 +10,21 @@
 </ion-header>
 
 <ion-content>
+  <ion-item *ngFor="let member of teamMembers">
+    <ion-avatar slot="start">
+      <ion-img [src]="member.image"></ion-img>
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ member.firstname }} {{ member.lastname }}</h2>
+      <p>Date of Birth: {{ member.dob }}</p>
+      <p>Position: {{ member.position }}</p>
+      <p>Total Wins: {{ member.totalWins }}</p>
+      <p>Total Matches: {{ member.totalMatches }}</p>
+      <p>Jersey Number: {{ member.jersey }}</p>
+      <p>Club: {{ member.club }}</p>
 
-
-  <ng-container *ngIf="addProfile">
-    <ion-list *ngFor="let item of addProfile">  
-      <ion-item href="/home/{{item.firstName}}" detail>
-        <ion-thumbnail class="ion-margin-end">
-          <ion-img src="{{item.imageURL}}"></ion-img>
-          <!-- <ion-button (click)="goToProfile()">Go to Profile</ion-button> -->
-        </ion-thumbnail>
-          <ion-label>{{item.firstName}}</ion-label>
-          <ion-label>{{item.lastName}}</ion-label>
-          <ion-label>{{item.position}}</ion-label>
-          <ion-label>{{item.club}}</ion-label>
-
-      </ion-item>
-    </ion-list>
-  </ng-container>
-  
+    </ion-label>
+  </ion-item>
 
 
 </ion-content>

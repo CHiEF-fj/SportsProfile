@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-add',
@@ -7,55 +8,58 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage {
-  selectedImage: string = '';
-  firstname: string = '';
-  lastname: string = '';
-  dob: string = '';
-  position: string = '';
-  totalWins: number = 0;
-  totalMatches: number = 0;
+  firstName: string='';
+  lastName: string='';
+  dob: string='';
+  position: string='';
+  totalWins: number= 0;
+  totalMatches: number=0;
   jersey: string = '';
-  club: string = '';
+  club: string='';
+  selectedImage: any;
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private dataService: DataService, private navCtrl: NavController) {}
 
-  onImageSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
+  onFileSelected(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files[0]) {
+      const file = inputElement.files[0];
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.selectedImage = e.target.result;
+      reader.onload = () => {
+        this.selectedImage = reader.result;
       };
       reader.readAsDataURL(file);
     }
   }
-  
-  onSubmit() {
-    // Handle form submission logic here
-    // You can access the form values using the component properties
-    const inputData = {
-      firstname: this.firstname,
-      lastname: this.lastname,
+
+  saveData() {
+    // Create a new member object with the form values
+    const newMember = {
+      firstName: this.firstName,
+      lastName: this.lastName,
       dob: this.dob,
       position: this.position,
       totalWins: this.totalWins,
       totalMatches: this.totalMatches,
       jersey: this.jersey,
       club: this.club,
+      image: this.selectedImage,
     };
 
+    // Pass the new member object to the data service
+    this.dataService.addMember(newMember);
 
-    // Reset the form fields after submission if needed
-    this.firstname = '';
-    this.lastname = '';
+    // Reset the form values
+    this.firstName = '';
+    this.lastName = '';
     this.dob = '';
     this.position = '';
     this.totalWins = 0;
     this.totalMatches = 0;
     this.jersey = '';
     this.club = '';
+    this.selectedImage = 0;
 
-    // Optionally, navigate to another page after form submission
-    this.navCtrl.navigateForward('/team-list', { state: inputData});
+    this.navCtrl.navigateForward('/team-list', { state: newMember});
   }
 }
