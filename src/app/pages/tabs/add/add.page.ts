@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/data.service';
+
 
 @Component({
   selector: 'app-add',
@@ -18,7 +19,11 @@ export class AddPage {
   club: string='';
   selectedImage: any;
 
-  constructor(private dataService: DataService, private navCtrl: NavController) {}
+  constructor(private dataService: DataService, 
+              private navCtrl: NavController, 
+              private toastController: ToastController
+            ) {}
+
 
   onFileSelected(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -62,4 +67,17 @@ export class AddPage {
 
     this.navCtrl.navigateForward('/team-list', { state: newMember});
   }
+  async showToast() {
+    await this.presentToast();
+  }
+
+    async presentToast() {
+      const toast = await this.toastController.create({
+        message: 'Player Profile created',
+        duration: 2000, // Duration in milliseconds
+        position: 'bottom' // Position of the toast
+      });
+      await toast.present();
+    }
+  
 }
