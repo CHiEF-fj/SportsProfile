@@ -65,7 +65,7 @@ export class AddPage {
     this.club = '';
     this.selectedImage = 0;
 
-    this.navCtrl.navigateForward('/team-list', { state: newMember});
+    this.navCtrl.navigateForward('', { state: newMember});
   }
   async showToast() {
     await this.presentToast();

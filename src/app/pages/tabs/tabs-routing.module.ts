@@ -13,7 +13,7 @@ const routes: Routes = [
         loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
       },
       {
-        path: 'group',
+        path: 'team-list',
         loadChildren: () => import('./team-list/team-list.module').then( m => m.TeamListPageModule)
       },
       {
